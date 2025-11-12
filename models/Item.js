@@ -9,8 +9,8 @@ const itemSchema = new mongoose.Schema({
   baseAmount: { type: Number, required: true },
   discount: { type: Number, default: 0 },
   totalAmount: { type: Number },
-  category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
-  subcategory: { type: mongoose.Schema.Types.ObjectId, ref: "Subcategory" },
+  categoryId: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
+  subcategoryId: { type: mongoose.Schema.Types.ObjectId, ref: "Subcategory" },
 });
 
 itemSchema.pre("save", function (next) {

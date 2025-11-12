@@ -31,7 +31,9 @@ exports.createItem = async (req, res) => {
 // Get all Items
 exports.getItems = async (req, res) => {
   try {
-    const items = await Item.find().populate("category subcategory");
+    const items = await Item.find()
+      .populate("subcategoryId")
+      .populate("categoryId");
     res.json(items);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -42,7 +44,7 @@ exports.getItems = async (req, res) => {
 exports.getItemsByCategory = async (req, res) => {
   try {
     const { categoryId } = req.params;
-    const items = await Item.find({ category: categoryId });
+    const items = await Item.find({ categoryId });
     res.json(items);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -53,7 +55,7 @@ exports.getItemsByCategory = async (req, res) => {
 exports.getItemsBySubcategory = async (req, res) => {
   try {
     const { subcategoryId } = req.params;
-    const items = await Item.find({ subcategory: subcategoryId });
+    const items = await Item.find({ subcategoryId });
     res.json(items);
   } catch (err) {
     res.status(500).json({ error: err.message });

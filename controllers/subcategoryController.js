@@ -23,7 +23,7 @@ exports.createSubcategory = async (req, res) => {
 // Get all Subcategories
 exports.getSubcategories = async (req, res) => {
   try {
-    const subcategories = await Subcategory.find().populate("category");
+    const subcategories = await Subcategory.find().populate("categoryId");
     res.json(subcategories);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -34,7 +34,7 @@ exports.getSubcategories = async (req, res) => {
 exports.getSubcategoriesByCategory = async (req, res) => {
   try {
     const { categoryId } = req.params;
-    const subcategories = await Subcategory.find({ category: categoryId });
+    const subcategories = await Subcategory.find({ categoryId });
     res.json(subcategories);
   } catch (err) {
     res.status(500).json({ error: err.message });
