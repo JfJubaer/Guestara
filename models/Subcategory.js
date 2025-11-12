@@ -6,7 +6,7 @@ const subcategorySchema = new mongoose.Schema({
   description: { type: String },
   taxApplicable: { type: Boolean },
   tax: { type: Number },
-  category: {
+  categoryId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
     required: true,
